@@ -1,0 +1,88 @@
+/* AuthenticationForm.module.scss */
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  min-width: 80%;
+}
+
+.heading-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.heading {
+  color: #213F7D;
+  font-weight: bold;
+  font-size: 2.5rem;
+  line-height: 3.415rem;
+}
+
+.subheading {
+  color: #545F7D;
+  font-weight: normal;
+  font-size: 1.25rem;
+  line-height: 1.7075rem;
+}
+
+.input-section {
+  display: flex;
+  flex-direction: column;
+  gap: 2.5rem;
+}
+
+.input-group {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.input-field {
+  background-color: white;
+  border: 2px solid rgba(84, 95, 125, 0.15);
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+  padding: 0.5rem 1rem;
+}
+
+.input {
+  background-color: transparent;
+  outline: none;
+  border: none;
+  color: #545F7D;
+  font-size: 0.875rem; /* text-sm */
+  &::placeholder {
+    color: #545F7D;
+    opacity: 0.65;
+    font-size: 0.875rem; /* text-sm */
+  }
+}
+
+.toggle-password {
+  font-weight: 600;
+  color: #39CDCC;
+  font-size: 0.875rem; /* text-sm */
+  cursor: pointer;
+}
+
+.forgot-password {
+  color: #39CDCC;
+  font-size: 0.875rem; /* text-sm */
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.button {
+  background-color: #39CDCC;
+  color: white;
+  border-radius: 0.5rem;
+  padding: 1.5rem 1rem;
+  font-size: 0.875rem; /* text-sm */
+  font-weight: 600;
+  &:hover {
+    background-color: #39CDCC;
+  }
+}
