@@ -1,7 +1,7 @@
-import styles from "./App.module.scss";
+import Routing from "./Routing";
 
 function App() {
-  return <div className={styles.main}>main</div>;
+  return <Routing />;
 }
 
 export default App;

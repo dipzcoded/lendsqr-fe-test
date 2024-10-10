@@ -3,6 +3,38 @@
 @tailwind utilities;
 @layer base {
   :root {
-    --radius: 0.5rem
+    --radius: 0.5rem;
   }
+}
+
+@font-face {
+  font-family: "Avenir Next Cyr";
+  src: url("/src/assets/fonts/AvenirNextCyr-Bold.woff2") format("woff2"),
+    url("/src/assets/fonts/AvenirNextCyr-Bold.woff") format("woff");
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Avenir Next Cyr";
+  src: url("/src/assets/fonts/AvenirNextCyr-Heavy.woff2") format("woff2"),
+    url("/src/assets/fonts/AvenirNextCyr-Heavy.woff") format("woff");
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Avenir Next Cyr";
+  src: url("/src/assets/fonts/AvenirNextCyr-Medium.woff2") format("woff2"),
+    url("/src/assets/fonts/AvenirNextCyr-Medium.woff") format("woff");
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Avenir Next Cyr";
+  src: url("/src/assets/fonts/AvenirNextCyr-Regular.woff2") format("woff2"),
+    url("/src/assets/fonts/AvenirNextCyr-Regular.woff") format("woff");
+  font-weight: 400;
+  font-style: normal;
 }
