@@ -6,7 +6,7 @@ import {
 } from "react-router-dom";
 import Signin from "./pages/Signin/Signin";
 import AppLayout from "./components/custom/AppLayout";
-import Dashboard from "./pages/Dashboard/Dashboard";
+import User from "./pages/Users/User";
 
 export default function Routing() {
   return (
@@ -15,8 +15,8 @@ export default function Routing() {
         <Route index path="/" element={<Navigate to="/signin" />} />
         <Route path="/signin" element={<Signin />} />
         <Route element={<AppLayout />}>
-          <Route element={<Navigate replace to="/dashboard" />} />
-          <Route path="dashboard" element={<Dashboard />} />
+          <Route element={<Navigate replace to="/users" />} />
+          <Route path="users" element={<User />} />
         </Route>
       </Routes>
     </Router>

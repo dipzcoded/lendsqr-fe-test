@@ -24,3 +24,9 @@ export { default as NotificationBellIcon } from "./notificationbell-icon.svg?rea
 export { default as NotificationArrowDownIcon } from "./notificationarrowdown-icon.svg?react";
 export { default as UsersIcon } from "./users-icon.svg?react";
 export { default as ArrowDown2Icon } from "./arrowdown2-icon.svg?react";
+export { default as TotalUsersIcon } from "./totalusers-icon.svg?react";
+export { default as UserSavingsIcon } from "./usersavings-icon.svg?react";
+export { default as ActiveUsersIcon } from "./activeusers-icon.svg?react";
+export { default as UserLoansIcon } from "./userloans-icon.svg?react";
+export { default as DottedMenuIcon } from "./dottedmenu-icon.svg?react";
+export { default as FilterIcon } from "./filter-icon.svg?react";

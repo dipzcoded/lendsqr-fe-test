@@ -24,42 +24,42 @@ export const navLinks = [
     header: "Customers",
     links: [
       {
-        url: "/dashboard/user",
+        url: "/users",
         icon: UsersIcon,
         label: "User",
       },
       {
-        url: "/dashboard/guarantors",
+        url: "/guarantors",
         icon: GuarantorsIcon,
         label: "Guarantors",
       },
       {
-        url: "/dashboard/loans",
+        url: "/loans",
         icon: LoansIcon,
         label: "Loans",
       },
       {
-        url: "/dashboard/decision-models",
+        url: "/decision-models",
         icon: HandShakeIcon,
         label: "Decision Models",
       },
       {
-        url: "/dashboard/savings",
+        url: "/savings",
         icon: PiggyBankIcon,
         label: "Savings",
       },
       {
-        url: "/dashboard/loan-requests",
+        url: "/loan-requests",
         icon: LoanRequestIcon,
         label: "Loan Requests",
       },
       {
-        url: "/dashboard/whilelist",
+        url: "/whilelist",
         icon: WhilelistIcon,
         label: "Whitelist",
       },
       {
-        url: "/dashboard/karma",
+        url: "/karma",
         icon: KarmaIcon,
         label: "Karma",
       },
@@ -70,47 +70,47 @@ export const navLinks = [
     header: "BUSINESSES",
     links: [
       {
-        url: "/dashboard/organization",
+        url: "/organization",
         icon: BriefCaseIcon,
         label: "Organization",
       },
       {
-        url: "/dashboard/loan-products",
+        url: "/loan-products",
         icon: LoanRequestIcon,
         label: "Loan Products",
       },
       {
-        url: "/dashboard/saving-products",
+        url: "/saving-products",
         icon: SavingProductsIcon,
         label: "Savings Products",
       },
       {
-        url: "/dashboard/fees-charge",
+        url: "/fees-charge",
         icon: FeesAndChargesIcon,
         label: "Fees and Charges",
       },
       {
-        url: "/dashboard/transactions",
+        url: "/transactions",
         icon: TransactionsIcon,
         label: "Transactions",
       },
       {
-        url: "/dashboard/services",
+        url: "/services",
         icon: ServicesIcon,
         label: "Services",
       },
       {
-        url: "/dashboard/service-amount",
+        url: "/service-amount",
         icon: ServiceAccountIcon,
         label: "Service Account",
       },
       {
-        url: "/dashboard/settlements",
+        url: "/settlements",
         icon: SettlementsIcon,
         label: "Settlements",
       },
       {
-        url: "/dashboard/reports",
+        url: "/reports",
         icon: ReportsIcon,
         label: "Reports",
       },
@@ -118,20 +118,20 @@ export const navLinks = [
   },
 
   {
-    header: "BUSINESSES",
+    header: "SETTINGS",
     links: [
       {
-        url: "/dashboard/preferences",
+        url: "/preferences",
         icon: PreferencesIcon,
         label: "Preferences",
       },
       {
-        url: "/dashboard/fees-pricing",
+        url: "/fees-pricing",
         icon: FeesPricingIcon,
         label: "Fees and Pricing",
       },
       {
-        url: "/dashboard/audit-logs",
+        url: "/audit-logs",
         icon: AuditLogIcon,
         label: "Audit Logs",
       },

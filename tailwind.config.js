@@ -16,7 +16,8 @@ export default {
       boxShadow: {
         loginShadow: "0px 15px 90px 0px #00000008",
         headerShaodw: "3px 0px 20px 0px #0000000A",
-		sidebarShadow:"0px 5px 20px 0px #0000000A"
+		userDataShadow:"3px 5px 20px 0px #0000000A",
+
       },
       keyframes: {
         "accordion-down": {

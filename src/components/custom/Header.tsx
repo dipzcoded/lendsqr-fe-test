@@ -9,7 +9,7 @@ export default function Header() {
       <MobileNav />
       <div className="relative ml-auto flex-1 flex sm:gap-16 items-center justify-between">
         <Logo className="hidden lg:block" />
-        <div className="flex-1 px-2 sm:px-8 flex justify-between items-center max-sm:justify-end">
+        <div className="flex-1 px-2 lg:px-8 sm:px-4 flex justify-between items-center max-sm:justify-end">
           <HeaderSearch />
           <HeaderNotification />
         </div>
