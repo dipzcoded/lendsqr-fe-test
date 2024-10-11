@@ -4,7 +4,7 @@ import UserSummaryData from "./_components/UserSummaryData";
 
 export default function User() {
   return (
-    <div className="grid grid-cols-1 gap-10">
+    <div className="grid grid-cols-1 gap-14">
       <UserSummaryData />
       {/* data table */}
       <DataTable columns={columns} data={userData} />

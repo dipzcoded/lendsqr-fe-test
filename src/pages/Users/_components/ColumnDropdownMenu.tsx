@@ -42,11 +42,11 @@ export default function ColumnDropdownMenu({ user }: Prop) {
             <EyesOpenIcon /> <span>View Details</span>
           </DropdownMenuItem>
 
-          <DropdownMenuItem className="font-medium text-[#545F7D] text-sm p-2.5 cursor-pointer rounded-md bg-transparent hover:bg-[#F1F2F3] flex items-center gap-1">
+          <DropdownMenuItem className="font-medium text-[#545F7D] text-sm p-2.5 cursor-pointer rounded-md bg-transparent hover:bg-[#F1F2F3] flex items-center gap-2">
             <BlackListUserIcon /> <span>Blacklist User</span>
           </DropdownMenuItem>
 
-          <DropdownMenuItem className="font-medium text-[#545F7D] text-sm p-2.5 cursor-pointer rounded-md bg-transparent hover:bg-[#F1F2F3] flex items-center gap-1">
+          <DropdownMenuItem className="font-medium text-[#545F7D] text-sm p-2.5 cursor-pointer rounded-md bg-transparent flex items-center gap-2">
             <ActivateUserIcon /> <span>Activate User</span>
           </DropdownMenuItem>
         </DropdownMenuContent>
