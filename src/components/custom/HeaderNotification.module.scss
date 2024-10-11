@@ -1,0 +1,48 @@
+.header-notification {
+  display: none;
+  align-items: center;
+  gap: 1rem;
+
+  @media (min-width: 640px) {
+    display: flex;
+  }
+
+  a {
+    text-decoration: underline;
+    color: #213f7d;
+    font-size: 1rem;
+  }
+
+  .icon-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+
+    .user-container {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+
+      img {
+        border-radius: 50%;
+      }
+
+      .user-details {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        cursor: pointer;
+
+        span {
+          font-weight: 500;
+          font-size: 1rem;
+          color: #213f7d;
+        }
+      }
+    }
+
+    .bell-icon {
+      cursor: pointer;
+    }
+  }
+}
