@@ -13,6 +13,12 @@ export default {
       fontFamily: {
         worksans: ["Work Sans", "sans-serif"],
       },
+      gridTemplateColumns: {
+        'auto-fit-minmax': 'repeat(auto-fit, minmax(12rem, 1fr))',
+        'auto-fit-minmax-2': 'repeat(auto-fit, minmax(14rem, 1fr))',
+        'auto-fit-minmax-3': 'repeat(auto-fit, minmax(16rem, 1fr))',
+        'auto-fit-minmax-4': 'repeat(auto-fit, minmax(18rem, 1fr))',
+      },
       boxShadow: {
         loginShadow: "0px 15px 90px 0px #00000008",
         headerShaodw: "3px 0px 20px 0px #0000000A",

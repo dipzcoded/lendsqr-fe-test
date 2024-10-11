@@ -3,7 +3,7 @@ import {
   FilledGoldenStarIcon,
   StrokedGoldenStarIcon,
 } from "@/assets";
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useState } from "react";
 import GeneralDetails from "./tab/GeneralDetails";
 
 const tabs = [
@@ -42,7 +42,7 @@ export default function UserDetailsHeader() {
                 6708e8832a8f2129866e0d3e
               </p>
             </div>
-            <div className="flex flex-col sm:items-center sm:justify-center gap-3 py-2 sm:px-3 font-worksans">
+            <div className="flex flex-col sm:items-center sm:justify-center gap-3 py-2 sm:py-0 sm:px-3 font-worksans">
               <h3 className="text-sm font-medium text-[#545F7D]">
                 User’s Tier
               </h3>
@@ -52,7 +52,7 @@ export default function UserDetailsHeader() {
                 <StrokedGoldenStarIcon />
               </div>
             </div>
-            <div className="flex flex-col py-2 sm:px-3 gap-3 font-worksans">
+            <div className="flex flex-col py-2 sm:py-0 sm:px-3 gap-3 font-worksans">
               <h4 className="font-medium text-[#213F7D] text-xl lg:text-2xl">
                 ₦200,000.00
               </h4>
@@ -79,7 +79,7 @@ export default function UserDetailsHeader() {
         </div>
       </div>
 
-      <div className="shadow-userDataShadow bg-white p-8 border border-[#213F7D0F] rounded-md flex flex-col gap-10">
+      <div className="shadow-userDataShadow bg-white p-8 border border-[#213F7D0F] rounded-md">
         {/* tabs content */}
 
         {displayTabContent()}

@@ -1,7 +1,7 @@
 
 import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
 import { Button } from "../ui/button";
-import { PanelLeft } from "lucide-react";
+import { SquareMenu } from "lucide-react";
 
 import {
   Accordion,
@@ -9,9 +9,10 @@ import {
   AccordionContent,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { DashBoardIcon, BriefCaseIcon, ArrowDown2Icon, Logo,SignoutIcon } from "@/assets";
+import { DashBoardIcon, BriefCaseIcon, ArrowDown2Icon,SignoutIcon } from "@/assets";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { navLinks } from "@/constants/navlinks.constant";
+import logo from '@/assets/logo.svg'
 
 export default function MobileNav() {
   const location = useLocation(); // Get the current location
@@ -20,13 +21,17 @@ export default function MobileNav() {
     <Sheet>
       <SheetTrigger asChild>
         <Button size="icon" variant="outline" className="lg:hidden">
-          <PanelLeft className="h-5 w-5" />
+          <SquareMenu className="h-5 w-5" />
           <span className="sr-only">Toggle Menu</span>
         </Button>
       </SheetTrigger>
       <SheetContent side="left" className="sm:max-w-96 overflow-y-auto">
         <div className="flex flex-col gap-10 py-10 px-5 sm:px-6  h-full">
-          <Logo className="scale-75" />
+          {/* <Logo className="scale-75 z-20" /> */}
+          <div className="self-start">
+          <img src={logo} alt="logo mobile" className="scale-90" />
+          </div>
+         
 
           <div className="flex flex-col gap-8">
             <div className="flex flex-col gap-10 ">

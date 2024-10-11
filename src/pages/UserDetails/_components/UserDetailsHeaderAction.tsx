@@ -10,7 +10,7 @@ export default function UserDetailsHeaderAction() {
   }
   return (
     <div className="flex flex-col  gap-4">
-      <Button className=" font-worksans bg-transparent hover:bg-transparent flex items-center gap-2 text-[#545F7D] text-base font-normal border-none outline-none px-4 py-5 self-start" onClick={onGoBack}>
+      <Button className=" font-worksans bg-transparent hover:bg-transparent flex items-center gap-2 text-[#545F7D] text-base font-normal border-none outline-none  px-0 sm:px-4 py-5 self-start" onClick={onGoBack}>
         <GoBackIcon />
         <span>Back to Users</span>
       </Button>
