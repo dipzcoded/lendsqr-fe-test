@@ -7,6 +7,7 @@ import {
 import Signin from "./pages/Signin/Signin";
 import AppLayout from "./components/custom/AppLayout";
 import User from "./pages/Users/User";
+import UserDetail from "./pages/UserDetails/UserDetail";
 
 export default function Routing() {
   return (
@@ -17,6 +18,7 @@ export default function Routing() {
         <Route element={<AppLayout />}>
           <Route element={<Navigate replace to="/users" />} />
           <Route path="users" element={<User />} />
+          <Route path="users/:id" element={<UserDetail />} />
         </Route>
       </Routes>
     </Router>

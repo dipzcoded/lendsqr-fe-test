@@ -9,7 +9,7 @@ import {
   AccordionContent,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { DashBoardIcon, BriefCaseIcon, ArrowDown2Icon, Logo } from "@/assets";
+import { DashBoardIcon, BriefCaseIcon, ArrowDown2Icon, Logo,SignoutIcon } from "@/assets";
 import { Link, NavLink, useLocation } from "react-router-dom";
 import { navLinks } from "@/constants/navlinks.constant";
 
@@ -25,7 +25,7 @@ export default function MobileNav() {
         </Button>
       </SheetTrigger>
       <SheetContent side="left" className="sm:max-w-96 overflow-y-auto">
-        <div className="flex flex-col gap-10 py-10 px-5 sm:px-6">
+        <div className="flex flex-col gap-10 py-10 px-5 sm:px-6  h-full">
           <Logo className="scale-75" />
 
           <div className="flex flex-col gap-8">
@@ -74,7 +74,7 @@ export default function MobileNav() {
                               }`
                             }
                           >
-                            {pathname.toLowerCase() === navlink.url && (
+                            {pathname.toLowerCase().includes(navlink.url.toLowerCase()) && (
                               <div className="bg-[#39CDCC] h-full w-1.5 absolute left-0" />
                             )}
                             <navlink.icon />
@@ -90,6 +90,13 @@ export default function MobileNav() {
               ))}
             </Accordion>
           </div>
+
+          <div className="mt-auto justify-self-end border-t py-5 border-opacity-[10%] border-[#213F7D]">
+          <div className="flex items-center gap-3 font-worksans text-[#213F7D] cursor-pointer">
+            <SignoutIcon />
+            <span className="text-base font-normal">Logout</span>
+          </div>
+        </div>
         </div>
       </SheetContent>
     </Sheet>

@@ -1,5 +1,10 @@
 import { Link, NavLink, useLocation } from "react-router-dom";
-import { DashBoardIcon, BriefCaseIcon, ArrowDown2Icon } from "@/assets";
+import {
+  DashBoardIcon,
+  BriefCaseIcon,
+  ArrowDown2Icon,
+  SignoutIcon,
+} from "@/assets";
 import { navLinks } from "@/constants/navlinks.constant";
 
 export default function Sidebar() {
@@ -49,7 +54,7 @@ export default function Sidebar() {
                       }`
                     }
                   >
-                    {pathname.toLowerCase() === navlink.url && (
+                    {pathname.toLowerCase().includes(navlink.url.toLowerCase()) && (
                       <div className="bg-[#39CDCC] h-full w-1.5 absolute left-0" />
                     )}
                     <navlink.icon />
@@ -59,6 +64,13 @@ export default function Sidebar() {
               </div>
             </div>
           ))}
+        </div>
+
+        <div className="mt-auto border-t py-5 border-opacity-[10%] border-[#213F7D] ">
+          <div className="pl-6 flex items-center gap-3 font-worksans text-[#213F7D] cursor-pointer">
+            <SignoutIcon />
+            <span className="text-base font-normal">Logout</span>
+          </div>
         </div>
       </nav>
     </aside>

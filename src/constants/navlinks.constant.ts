@@ -18,6 +18,7 @@ import {
   WhilelistIcon,
   UsersIcon,
   LoansIcon,
+  SystemMessagesIcon
 } from "@/assets";
 export const navLinks = [
   {
@@ -135,6 +136,11 @@ export const navLinks = [
         icon: AuditLogIcon,
         label: "Audit Logs",
       },
+      {
+        url: "/system-messages",
+        icon: SystemMessagesIcon,
+        label: "Systems Messages",
+      }
     ],
   },
 ];
