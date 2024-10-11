@@ -30,3 +30,6 @@ export { default as ActiveUsersIcon } from "./activeusers-icon.svg?react";
 export { default as UserLoansIcon } from "./userloans-icon.svg?react";
 export { default as DottedMenuIcon } from "./dottedmenu-icon.svg?react";
 export { default as FilterIcon } from "./filter-icon.svg?react";
+export { default as ActivateUserIcon } from "./activateuser-icon.svg?react";
+export { default as EyesOpenIcon } from "./eyesopen-icon.svg?react";
+export { default as BlackListUserIcon } from "./blacklist-user-icon.svg?react";
