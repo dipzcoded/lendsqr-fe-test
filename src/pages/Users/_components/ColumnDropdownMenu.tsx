@@ -38,7 +38,6 @@ export default function ColumnDropdownMenu({ user }: Prop) {
             className="font-medium text-[#545F7D] text-sm p-2.5 cursor-pointer rounded-md bg-transparent  flex items-center gap-2"
             onClick={onView}
           >
-            
             <EyesOpenIcon /> <span>View Details</span>
           </DropdownMenuItem>
 

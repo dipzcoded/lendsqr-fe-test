@@ -1,0 +1,58 @@
+.columnHeader {
+  .headerText {
+    color: #545f7d;
+    font-size: 0.875rem;
+    font-weight: 600;
+    font-family: "Work Sans", sans-serif;
+    text-transform: uppercase;
+  }
+}
+
+.cellContent {
+  font-size: 0.875rem;
+  font-weight: 400;
+  font-family: "Work Sans", sans-serif;
+  color: #545f7d;
+}
+
+.dateCell {
+  font-size: 0.875rem;
+  font-weight: 400;
+  color: #1f2937;
+}
+
+.statusCell {
+  display: flex;
+  justify-content: flex-start;
+
+  .statusPill {
+    font-weight: 400;
+    font-size: 0.875rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 9999px;
+    padding: 0.625rem 1.25rem;
+    font-family: "Work Sans", sans-serif;
+
+    &.active {
+      color: #39cd62;
+      background-color: rgba(57, 205, 98, 0.06);
+    }
+
+    &.inactive {
+      color: #545f7d;
+      background-color: rgba(84, 95, 125, 0.06);
+    }
+
+    &.blacklisted {
+      color: #e4033b;
+      background-color: rgba(228, 3, 59, 0.1);
+    }
+
+    &.pending {
+      color: #e9b200;
+      background-color: rgba(233, 178, 0, 0.1);
+    }
+  }
+}

@@ -6,34 +6,28 @@ import {
   SignoutIcon,
 } from "@/assets";
 import { navLinks } from "@/constants/navlinks.constant";
+import styles from './Sidebar.module.scss';
 
 export default function Sidebar() {
   const location = useLocation(); // Get the current location
   const { pathname } = location;
 
   return (
-    <aside className="fixed inset-y-0 left-0 z-10 hidden w-72 flex-col  bg-white lg:flex shadow-sidebarShadow lg:pt-32 overflow-y-auto">
-      <nav className="flex flex-col gap-10  sm:py-5">
-        <div className="flex flex-col gap-8">
-          <div className="flex items-center gap-2.5 px-8">
-            <BriefCaseIcon className="opacity-80" />{" "}
-            <div className="flex items-center gap-3 cursor-pointer">
-              <span className="font-worksans font-normal text-base text-[#213F7D]">
-                Switch Organization
-              </span>
-              <ArrowDown2Icon className=" text-[#213F7D]" />
-            </div>
-          </div>
-          <div className="flex items-center px-8 py-3.5 gap-2.5 hover:bg-opacity-[6%] opacity-60 hover:bg-[#39CDCC] hover:opacity-100">
-            <DashBoardIcon className="" />{" "}
-            <Link
-              to="/dashboard"
-              className="text-[#213F7D] font-normal font-worksans"
-            >
-              Dashboard
-            </Link>
+    <aside className={styles.sidebar}>
+      <nav className={styles.nav}>
+      <div className={styles["nav-group"]}>
+        <div className={styles["nav-item"]}>
+          <BriefCaseIcon className="opacity-80" />
+          <div className={styles["switch-organization"]}>
+            <span>Switch Organization</span>
+            <ArrowDown2Icon className={styles["arrow-icon"]} />
           </div>
         </div>
+        <div className={styles["dashboard-link"]}>
+          <DashBoardIcon />
+          <Link to="/dashboard">Dashboard</Link>
+        </div>
+      </div>
 
         <div className="flex flex-col gap-6">
           {navLinks.map((link) => (
@@ -66,12 +60,12 @@ export default function Sidebar() {
           ))}
         </div>
 
-        <div className="mt-auto border-t py-5 border-opacity-[10%] border-[#213F7D] ">
-          <div className="pl-6 flex items-center gap-3 font-worksans text-[#213F7D] cursor-pointer">
-            <SignoutIcon />
-            <span className="text-base font-normal">Logout</span>
-          </div>
-        </div>
+        <div className={styles["logout-section"]}>
+      <div className={styles["logout-button"]}>
+        <SignoutIcon />
+        <span className={styles["logout-text"]}>Logout</span>
+      </div>
+    </div>
       </nav>
     </aside>
   );

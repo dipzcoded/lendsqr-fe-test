@@ -1,6 +1,8 @@
 import { ColumnDef } from "@tanstack/react-table";
 import { parseISO, format } from "date-fns";
 import ColumnDropdownMenu from "./ColumnDropdownMenu";
+import styles from "./column.module.scss";
+
 
 export type User = {
   id: string;
@@ -22071,162 +22073,87 @@ export const columns: ColumnDef<User>[] = [
   {
     accessorKey: "organization",
     header: () => (
-      <div>
-        <span className="text-[#545F7D] text-sm font-semibold font-worksans uppercase">
-          organization
-        </span>
+      <div className={styles.columnHeader}>
+        <span className={styles.headerText}>organization</span>
       </div>
     ),
     cell: ({ row }) => {
       const value = row.getValue("organization") as string;
-
-      return (
-        <div className="text-sm font-normal font-worksans text-[#545F7D]">
-          {value}
-        </div>
-      );
+      return <div className={styles.cellContent}>{value}</div>;
     },
   },
   {
     accessorKey: "userName",
     header: () => (
-      <div>
-        <span className="text-[#545F7D] text-sm font-semibold font-worksans uppercase">
-          Username
-        </span>
+      <div className={styles.columnHeader}>
+        <span className={styles.headerText}>Username</span>
       </div>
     ),
     cell: ({ row }) => {
       const value = row.getValue("userName") as string;
-      return (
-        <div className="text-sm font-normal font-worksans text-[#545F7D]">
-          {value}
-        </div>
-      );
+      return <div className={styles.cellContent}>{value}</div>;
     },
   },
   {
     accessorKey: "email",
     header: () => (
-      <div>
-        <span className="text-[#545F7D] text-sm font-semibold font-worksans uppercase">
-          Email
-        </span>
+      <div className={styles.columnHeader}>
+        <span className={styles.headerText}>Email</span>
       </div>
     ),
     cell: ({ row }) => {
       const value = row.getValue("email") as string;
-      return (
-        <div className="text-sm font-normal font-worksans text-[#545F7D]">
-          {value}
-        </div>
-      );
+      return <div className={styles.cellContent}>{value}</div>;
     },
   },
-
   {
     accessorKey: "phoneNumber",
     header: () => (
-      <div>
-        <span className="text-[#545F7D] text-sm font-semibold font-worksans uppercase">
-          Phone number
-        </span>
+      <div className={styles.columnHeader}>
+        <span className={styles.headerText}>Phone number</span>
       </div>
     ),
     cell: ({ row }) => {
       const value = row.getValue("phoneNumber") as string;
-      return (
-        <div className="text-sm font-normal font-worksans text-[#545F7D]">
-          {value}
-        </div>
-      );
+      return <div className={styles.cellContent}>{value}</div>;
     },
   },
   {
     accessorKey: "date",
     header: () => (
-      <div>
-        <span className="text-[#545F7D] text-sm font-semibold font-worksans uppercase">
-          Date joined
-        </span>
+      <div className={styles.columnHeader}>
+        <span className={styles.headerText}>Date joined</span>
       </div>
     ),
     cell: ({ row }) => {
       const value = row.getValue("date") as string;
-      // Parse the ISO string into a Date object
       const parsedDate = parseISO(value);
-
-      // Format the date into the desired format
       const formattedDate = format(parsedDate, "MMMM dd, yyyy hh:mm a");
-
+      return <div className={styles.dateCell}>{formattedDate}</div>;
+    },
+  },
+  {
+    accessorKey: "status",
+    header: () => (
+      <div className={styles.columnHeader}>
+        <span className={styles.headerText}>Status</span>
+      </div>
+    ),
+    cell: ({ row }) => {
+      const value = row.getValue("status") as Status;
+      const statusClass = styles[value.toLowerCase()];
       return (
-        <div className="text-sm font-normal text-[#1F2937]">
-          {formattedDate}
+        <div className={styles.statusCell}>
+          <div className={`${styles.statusPill} ${statusClass}`}>{value}</div>
         </div>
       );
     },
   },
-
-  {
-    accessorKey: "status",
-    header: () => (
-      <div>
-        <span className="text-[#545F7D] text-sm font-semibold font-worksans uppercase">
-          Status
-        </span>
-      </div>
-    ),
-    cell: ({ row }) => {
-      const value = row.getValue("status") as string;
-
-
-      if (value === Status.ACTIVE) {
-        return (
-          <div className="flex justify-start">
-             <div className="font-normal text-sm flex items-center justify-center rounded-full px-6 py-2.5 font-worksans text-[#39CD62] bg-opacity-[6%] bg-[#39CD62]">
-            {value}
-          </div>
-          </div>
-         
-        );
-      } else if (value === Status.INACTIVE) {
-        return (
-          <div className="flex justify-start">
- <div className="font-normal text-sm flex items-center justify-center rounded-full px-5 py-2.5 font-worksans text-[#545F7D] bg-opacity-[6%] bg-[#545F7D]">
-            {value}
-          </div>
-          </div>
-         
-        );
-      } else if (value === Status.BLACKLISTED) {
-        return (
-          <div className="flex justify-start">
-              <div className="font-normal text-sm flex items-center justify-center rounded-full px-5 py-2.5 font-worksans text-[#E4033B] bg-opacity-[10%] bg-[#E4033B]">
-            {value}
-          </div>
-          </div>
-        
-        );
-      } else {
-        return (
-          <div className="flex justify-start">
- <div className="font-normal text-sm flex items-center justify-center rounded-full px-5 py-2.5 font-worksans  text-[#E9B200] bg-opacity-[10%] bg-[#E9B200]">
-            {value}
-          </div>
-          </div>
-         
-        );
-      }
-    },
-  },
-
   {
     accessorKey: "action",
     header: () => (
-      <div>
-        <span className="text-[#545F7D] text-sm font-semibold font-worksans uppercase">
-          
-        </span>
+      <div className={styles.columnHeader}>
+        <span className={styles.headerText}></span>
       </div>
     ),
     cell: ({ row }) => {

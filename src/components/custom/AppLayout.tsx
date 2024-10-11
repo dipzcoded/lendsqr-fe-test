@@ -1,13 +1,14 @@
 import Sidebar from "./Sidebar";
 import Header from "./Header";
 import { Outlet } from "react-router-dom";
+import styles from './AppLayout.module.scss'; // Import SCSS file
 
 export default function AppLayout() {
   return (
-    <div className="flex min-h-screen w-full flex-col bg-[#FBFBFB]">
+    <div className={styles["app-layout"]}>
       <Sidebar />
       <Header />
-      <main className="lg:ml-72 sm:mt-28 grid flex-1 items-start gap-4 p-6 sm:px-10 sm:py-8 md:gap-8 overflow-y-auto">
+      <main className={styles["main-content"]}>
         <Outlet />
       </main>
     </div>
