@@ -3,7 +3,11 @@ import { GoBackIcon } from "@/assets";
 import { useNavigate } from "react-router-dom";
 import styles from "./UserDetailsHeaderAction.module.scss";
 
-export default function UserDetailsHeaderAction() {
+type Props = {
+  userFound: boolean;
+};
+
+export default function UserDetailsHeaderAction({ userFound }: Props) {
   const navigate = useNavigate();
 
   function onGoBack() {
@@ -21,17 +25,19 @@ export default function UserDetailsHeaderAction() {
         <span>Back to Users</span>
       </Button>
 
-      <div className={styles.detailsContainer}>
-        <h2 className={styles.title}>User Details</h2>
-        <div className={styles.buttonGroup}>
-          <Button className="border border-[#E4033B] px-5 py-6 bg-transparent hover:bg-transparent text-[#E4033B] font-semibold text-sm font-worksans rounded-lg">
-            Blacklist User
-          </Button>
-          <Button className="border border-[#39CDCC] px-5 py-6 bg-transparent hover:bg-transparent text-[#39CDCC] font-semibold text-sm font-worksans rounded-lg">
-            Activate User
-          </Button>
+      {userFound && (
+        <div className={styles.detailsContainer}>
+          <h2 className={styles.title}>User Details</h2>
+          <div className={styles.buttonGroup}>
+            <Button className="border border-[#E4033B] px-5 py-6 bg-transparent hover:bg-transparent text-[#E4033B] font-semibold text-sm font-worksans rounded-lg">
+              Blacklist User
+            </Button>
+            <Button className="border border-[#39CDCC] px-5 py-6 bg-transparent hover:bg-transparent text-[#39CDCC] font-semibold text-sm font-worksans rounded-lg">
+              Activate User
+            </Button>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 }

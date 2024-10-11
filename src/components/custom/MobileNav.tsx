@@ -1,4 +1,3 @@
-
 import { Sheet, SheetContent, SheetTrigger } from "../ui/sheet";
 import { Button } from "../ui/button";
 import { SquareMenu } from "lucide-react";
@@ -9,13 +8,19 @@ import {
   AccordionContent,
   AccordionTrigger,
 } from "@/components/ui/accordion";
-import { DashBoardIcon, BriefCaseIcon, ArrowDown2Icon,SignoutIcon } from "@/assets";
-import { Link, NavLink, useLocation } from "react-router-dom";
+import {
+  DashBoardIcon,
+  BriefCaseIcon,
+  ArrowDown2Icon,
+  SignoutIcon,
+} from "@/assets";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import { navLinks } from "@/constants/navlinks.constant";
-import logo from '@/assets/logo.svg'
+import logo from "@/assets/logo.svg";
 
 export default function MobileNav() {
-  const location = useLocation(); // Get the current location
+  const location = useLocation();
+  const navigate = useNavigate();
   const { pathname } = location;
   return (
     <Sheet>
@@ -29,9 +34,8 @@ export default function MobileNav() {
         <div className="flex flex-col gap-10 py-10 px-5 sm:px-6  h-full">
           {/* <Logo className="scale-75 z-20" /> */}
           <div className="self-start">
-          <img src={logo} alt="logo mobile" className="scale-90" />
+            <img src={logo} alt="logo mobile" className="scale-90" />
           </div>
-         
 
           <div className="flex flex-col gap-8">
             <div className="flex flex-col gap-10 ">
@@ -79,7 +83,9 @@ export default function MobileNav() {
                               }`
                             }
                           >
-                            {pathname.toLowerCase().includes(navlink.url.toLowerCase()) && (
+                            {pathname
+                              .toLowerCase()
+                              .includes(navlink.url.toLowerCase()) && (
                               <div className="bg-[#39CDCC] h-full w-1.5 absolute left-0" />
                             )}
                             <navlink.icon />
@@ -97,11 +103,14 @@ export default function MobileNav() {
           </div>
 
           <div className="mt-auto justify-self-end border-t py-5 border-opacity-[10%] border-[#213F7D]">
-          <div className="flex items-center gap-3 font-worksans text-[#213F7D] cursor-pointer">
-            <SignoutIcon />
-            <span className="text-base font-normal">Logout</span>
+            <div
+              className="flex items-center gap-3 font-worksans text-[#213F7D] cursor-pointer"
+              onClick={() => navigate("/signin")}
+            >
+              <SignoutIcon />
+              <span className="text-base font-normal">Logout</span>
+            </div>
           </div>
-        </div>
         </div>
       </SheetContent>
     </Sheet>

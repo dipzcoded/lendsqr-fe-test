@@ -5,6 +5,7 @@ import {
 } from "@/assets";
 import { useCallback, useState } from "react";
 import GeneralDetails from "./tab/GeneralDetails";
+import { User } from "@/types/api.type";
 
 const tabs = [
   "General Details",
@@ -15,16 +16,20 @@ const tabs = [
   "App and System",
 ];
 
-export default function UserDetailsHeader() {
+type Props = {
+  userInfo: User;
+};
+
+export default function UserDetailsHeader({ userInfo }: Props) {
   const [currentTab] = useState(0);
 
   const displayTabContent = useCallback(() => {
     if (currentTab === 0) {
-      return <GeneralDetails />;
+      return <GeneralDetails userInfo={userInfo} />;
     } else {
       return null;
     }
-  }, [currentTab]);
+  }, [currentTab, userInfo]);
 
   return (
     <div className="grid grid-cols-1 gap-8">
@@ -36,10 +41,10 @@ export default function UserDetailsHeader() {
           <div className="divide-y-[1px] sm:divide-x-[1px] sm:divide-y-0 divide-[#545F7D] divide-opacity-30  flex flex-col sm:flex-row gap-5">
             <div className="flex flex-col gap-2 font-worksans">
               <h3 className="text-[#213F7D] font-medium text-xl lg:text-2xl">
-                Grace Effiom
+                {userInfo?.personalInformation.fullName}
               </h3>
               <p className="text-sm font-normal text-[#545F7D]">
-                6708e8832a8f2129866e0d3e
+                {userInfo?.id}
               </p>
             </div>
             <div className="flex flex-col sm:items-center sm:justify-center gap-3 py-2 sm:py-0 sm:px-3 font-worksans">
@@ -54,10 +59,15 @@ export default function UserDetailsHeader() {
             </div>
             <div className="flex flex-col py-2 sm:py-0 sm:px-3 gap-3 font-worksans">
               <h4 className="font-medium text-[#213F7D] text-xl lg:text-2xl">
-                ₦200,000.00
+                {Number(
+                  userInfo?.bankDetails.accountBalance.split("₦")[1]
+                ).toLocaleString("en-NG", {
+                  minimumFractionDigits: 2,
+                  maximumFractionDigits: 2,
+                })}
               </h4>
               <p className="font-normal text-sm text-[#213F7D]">
-                9912345678/Providus Bank
+                {userInfo?.bankDetails.accountNumber}/{userInfo?.bankDetails.bankName}
               </p>
             </div>
           </div>
