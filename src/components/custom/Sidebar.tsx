@@ -14,7 +14,7 @@ export default function Sidebar() {
   const { pathname } = location;
 
   return (
-    <aside className={styles.sidebar}>
+    <aside className={styles.sidebar}  id="custom-scroll">
       <nav className={styles.nav}>
       <div className={styles["nav-group"]}>
         <div className={styles["nav-item"]}>

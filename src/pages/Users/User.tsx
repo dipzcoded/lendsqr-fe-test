@@ -3,7 +3,7 @@ import { columns, User as Users } from "./_components/column";
 import { DataTable } from "./_components/data-table";
 import UserSummaryData from "./_components/UserSummaryData";
 import { Button } from "@/components/ui/button";
-import Loader from "./_components/Loader";
+import Loader from "../../components/custom/Loader";
 
 export default function User() {
   const { users, isLoadingUsers, errorUsers, refetch } = useGetAllUsers();

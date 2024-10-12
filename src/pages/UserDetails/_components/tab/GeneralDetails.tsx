@@ -1,213 +1,71 @@
+// GeneralDetails.tsx
+import React from 'react';
 import { User } from "@/types/api.type";
+import styles from './GeneralDetails.module.scss';
 
 type Props = {
-  userInfo:User
+  userInfo: User
 }
 
-export default function GeneralDetails({userInfo}:Props) {
+export default function GeneralDetails({ userInfo }: Props) {
   return (
-    <div className="flex flex-col gap-10 font-worksans divide-y-[1px] divide-[#213F7D] divide-opacity-[10%]">
-      <div className="flex flex-col gap-4">
-        <h3 className="font-medium text-[#213F7D] text-base ">
+    <div className={styles.container}>
+      <div className={styles.section}>
+        <h3 className={styles.sectionTitle}>
           Personal Information
         </h3>
-        <div className="grid grid-cols-auto-fit-minmax gap-8 sm:gap-8">
-          <div className="flex flex-col gap-1.5">
-            <h4 className="font-normal text-sm text-[#545F7D] uppercase">
-              full Name
-            </h4>
-            <h3 className="font-medium text-base text-[#545F7D]">
-              {userInfo?.personalInformation.fullName}
-            </h3>
-          </div>
-
-          <div className="flex flex-col gap-1.5">
-            <h4 className="font-normal text-sm text-[#545F7D] uppercase">
-              Phone Number
-            </h4>
-            <h3 className="font-medium text-base text-[#545F7D]">
-              {userInfo?.personalInformation.phoneNumber}
-            </h3>
-          </div>
-
-          <div className="flex flex-col gap-1.5">
-            <h4 className="font-normal text-sm text-[#545F7D] uppercase">
-              Email Address
-            </h4>
-            <h3 className="font-medium text-base text-[#545F7D]">
-              {userInfo?.email}
-            </h3>
-          </div>
-
-          <div className="flex flex-col gap-1.5">
-            <h4 className="font-normal text-sm text-[#545F7D] uppercase">
-              Bvn
-            </h4>
-            <h3 className="font-medium text-base text-[#545F7D]">
-              {userInfo?.personalInformation.bvn}
-            </h3>
-          </div>
-
-          <div className="flex flex-col gap-1.5">
-            <h4 className="font-normal text-sm text-[#545F7D] uppercase">
-              Gender
-            </h4>
-            <h3 className="font-medium text-base text-[#545F7D]">{userInfo?.personalInformation.gender}</h3>
-          </div>
-
-          <div className="flex flex-col gap-1.5">
-            <h4 className="font-normal text-sm text-[#545F7D] uppercase">
-              Marital status
-            </h4>
-            <h3 className="font-medium text-base text-[#545F7D]">{userInfo?.personalInformation.maritalStatus}</h3>
-          </div>
-
-          <div className="flex flex-col gap-1.5">
-            <h4 className="font-normal text-sm text-[#545F7D] uppercase">
-              Children
-            </h4>
-            <h3 className="font-medium text-base text-[#545F7D]">{userInfo?.personalInformation.children}</h3>
-          </div>
-
-          <div className="flex flex-col gap-1.5">
-            <h4 className="font-normal text-sm text-[#545F7D] uppercase">
-              Type of residence
-            </h4>
-            <h3 className="font-medium text-base text-[#545F7D]">
-              {userInfo?.personalInformation.typeOfResidence}
-            </h3>
-          </div>
+        <div className={styles.grid}>
+          <InfoItem label="Full Name" value={userInfo?.personalInformation.fullName} />
+          <InfoItem label="Phone Number" value={userInfo?.personalInformation.phoneNumber} />
+          <InfoItem label="Email Address" value={userInfo?.email} />
+          <InfoItem label="BVN" value={userInfo?.personalInformation.bvn} />
+          <InfoItem label="Gender" value={userInfo?.personalInformation.gender} />
+          <InfoItem label="Marital Status" value={userInfo?.personalInformation.maritalStatus} />
+          <InfoItem label="Children" value={userInfo?.personalInformation.children} />
+          <InfoItem label="Type of Residence" value={userInfo?.personalInformation.typeOfResidence} />
         </div>
       </div>
 
-      <div className="flex flex-col gap-4 py-3 sm:py-4">
-        <h3 className="font-medium text-[#213F7D] text-base ">
+      <div className={`${styles.section} ${styles.borderTop}`}>
+        <h3 className={styles.sectionTitle}>
           Education and Employment
         </h3>
-        <div className="grid grid-cols-auto-fit-minmax-2 gap-8 sm:gap-6">
-          <div className="flex flex-col gap-1.5">
-            <h4 className="font-normal text-sm text-[#545F7D] uppercase">
-              level of education
-            </h4>
-            <h3 className="font-medium text-base text-[#545F7D]">{userInfo?.educationEmployment.levelOfEducation}</h3>
-          </div>
-
-          <div className="flex flex-col gap-1.5">
-            <h4 className="font-normal text-sm text-[#545F7D] uppercase">
-              employment status
-            </h4>
-            <h3 className="font-medium text-base text-[#545F7D]">{userInfo?.educationEmployment.employmentStatus}</h3>
-          </div>
-
-          <div className="flex flex-col gap-1.5">
-            <h4 className="font-normal text-sm text-[#545F7D] uppercase">
-              sector of employment
-            </h4>
-            <h3 className="font-medium text-base text-[#545F7D]">{userInfo?.educationEmployment.sectorOfEmployment}</h3>
-          </div>
-
-          <div className="flex flex-col gap-1.5">
-            <h4 className="font-normal text-sm text-[#545F7D] uppercase">
-              Duration of employment
-            </h4>
-            <h3 className="font-medium text-base text-[#545F7D]">{userInfo?.educationEmployment.durationOfEmployment}</h3>
-          </div>
-
-          <div className="flex flex-col gap-1.5">
-            <h4 className="font-normal text-sm text-[#545F7D] uppercase">
-              office email
-            </h4>
-            <h3 className="font-medium text-base text-[#545F7D]">
-              {userInfo?.educationEmployment.officeEmail}
-            </h3>
-          </div>
-
-          <div className="flex flex-col gap-1.5">
-            <h4 className="font-normal text-sm text-[#545F7D] uppercase">
-              Monthly income
-            </h4>
-            <h3 className="font-medium text-base text-[#545F7D]">
-             {userInfo?.educationEmployment.monthlyIncomeRange}
-            </h3>
-          </div>
-
-          <div className="flex flex-col gap-1.5">
-            <h4 className="font-normal text-sm text-[#545F7D] uppercase">
-              loan repayment
-            </h4>
-            <h3 className="font-medium text-base text-[#545F7D]">{userInfo?.educationEmployment.loanRepayment}</h3>
-          </div>
+        <div className={styles.grid}>
+          <InfoItem label="Level of Education" value={userInfo?.educationEmployment.levelOfEducation} />
+          <InfoItem label="Employment Status" value={userInfo?.educationEmployment.employmentStatus} />
+          <InfoItem label="Sector of Employment" value={userInfo?.educationEmployment.sectorOfEmployment} />
+          <InfoItem label="Duration of Employment" value={userInfo?.educationEmployment.durationOfEmployment} />
+          <InfoItem label="Office Email" value={userInfo?.educationEmployment.officeEmail} />
+          <InfoItem label="Monthly Income" value={userInfo?.educationEmployment.monthlyIncomeRange} />
+          <InfoItem label="Loan Repayment" value={userInfo?.educationEmployment.loanRepayment} />
         </div>
       </div>
 
-      <div className="flex flex-col gap-4 py-3 sm:py-4">
-        <h3 className="font-medium text-[#213F7D] text-base ">Socials</h3>
-        <div className="grid grid-cols-auto-fit-minmax gap-8 sm:gap-4">
-          <div className="flex flex-col gap-1.5">
-            <h4 className="font-normal text-sm text-[#545F7D] uppercase">
-              Twitter
-            </h4>
-            <h3 className="font-medium text-base text-[#545F7D]">
-            @{userInfo?.socials.twitter.replace("https://twitter.com/",'')}
-            </h3>
-          </div>
-
-          <div className="flex flex-col gap-1.5">
-            <h4 className="font-normal text-sm text-[#545F7D] uppercase">
-              Facebook
-            </h4>
-            <h3 className="font-medium text-base text-[#545F7D]">
-              {userInfo?.socials.facebook.replace('https://facebook.com/','')}
-            </h3>
-          </div>
-
-          <div className="flex flex-col gap-1.5">
-            <h4 className="font-normal text-sm text-[#545F7D] uppercase">
-              Linkedin
-            </h4>
-            <h3 className="font-medium text-base text-[#545F7D]">{userInfo?.socials.linkedin.replace('https://linkedin.com/in/','')}</h3>
-          </div>
+      <div className={`${styles.section} ${styles.borderTop}`}>
+        <h3 className={styles.sectionTitle}>Socials</h3>
+        <div className={styles.grid}>
+          <InfoItem label="Twitter" value={`@${userInfo?.socials.twitter.replace("https://twitter.com/", '')}`} />
+          <InfoItem label="Facebook" value={userInfo?.socials.facebook.replace('https://facebook.com/', '')} />
+          <InfoItem label="LinkedIn" value={userInfo?.socials.linkedin.replace('https://linkedin.com/in/', '')} />
         </div>
       </div>
 
-      <div className="flex flex-col gap-4 py-3 sm:py-4">
-        <h3 className="font-medium text-[#213F7D] text-base ">Guarantor</h3>
-        <div className="grid grid-cols-auto-fit-minmax gap-8 sm:gap-4">
-          <div className="flex flex-col gap-1.5">
-            <h4 className="font-normal text-sm text-[#545F7D] uppercase">
-              full Name
-            </h4>
-            <h3 className="font-medium text-base text-[#545F7D]">
-              {userInfo?.guarantor.fullName}
-            </h3>
-          </div>
-
-          <div className="flex flex-col gap-1.5">
-            <h4 className="font-normal text-sm text-[#545F7D] uppercase">
-              Phone Number
-            </h4>
-            <h3 className="font-medium text-base text-[#545F7D]">
-              {userInfo?.guarantor.phoneNumber}
-            </h3>
-          </div>
-
-          <div className="flex flex-col gap-1.5">
-            <h4 className="font-normal text-sm text-[#545F7D] uppercase">
-              Email Address
-            </h4>
-            <h3 className="font-medium text-base text-[#545F7D]">
-             {userInfo?.guarantor.email}
-            </h3>
-          </div>
-
-          <div className="flex flex-col gap-1.5">
-            <h4 className="font-normal text-sm text-[#545F7D] uppercase">
-              Relationship
-            </h4>
-            <h3 className="font-medium text-base text-[#545F7D]">{userInfo?.guarantor.relationship}</h3>
-          </div>
+      <div className={`${styles.section} ${styles.borderTop}`}>
+        <h3 className={styles.sectionTitle}>Guarantor</h3>
+        <div className={styles.grid}>
+          <InfoItem label="Full Name" value={userInfo?.guarantor.fullName} />
+          <InfoItem label="Phone Number" value={userInfo?.guarantor.phoneNumber} />
+          <InfoItem label="Email Address" value={userInfo?.guarantor.email} />
+          <InfoItem label="Relationship" value={userInfo?.guarantor.relationship} />
         </div>
       </div>
     </div>
   );
 }
+
+const InfoItem: React.FC<{ label: string; value?: string | number }> = ({ label, value }) => (
+  <div className={styles.infoItem}>
+    <h4 className={styles.label}>{label}</h4>
+    <h3 className={styles.value}>{value}</h3>
+  </div>
+);

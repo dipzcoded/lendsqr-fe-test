@@ -8,6 +8,7 @@ import Signin from "./pages/Signin/Signin";
 import AppLayout from "./components/custom/AppLayout";
 import User from "./pages/Users/User";
 import UserDetail from "./pages/UserDetails/UserDetail";
+import PageNotFound from "./pages/PageNotFound/PageNotFound";
 
 export default function Routing() {
   return (
@@ -20,6 +21,7 @@ export default function Routing() {
           <Route path="users" element={<User />} />
           <Route path="users/:id" element={<UserDetail />} />
         </Route>
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
     </Router>
   );
