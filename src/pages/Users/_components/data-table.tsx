@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useMemo, useState } from "react";
 import {
   ColumnDef,
   flexRender,
@@ -7,14 +7,15 @@ import {
   getPaginationRowModel,
   useReactTable,
   PaginationState,
-} from "@tanstack/react-table"
-import { ChevronDown, ChevronLeft, ChevronRight } from "lucide-react"
+} from "@tanstack/react-table";
+import { ChevronDown, ChevronLeft, ChevronRight } from "lucide-react";
 import {
   Popover,
   PopoverContent,
   PopoverTrigger,
-} from "@/components/ui/popover"
-import { Button } from "@/components/ui/button"
+} from "@/components/ui/popover";
+
+import { Button } from "@/components/ui/button";
 import {
   Table,
   TableBody,
@@ -22,12 +23,13 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from "@/components/ui/table"
-import FilterDropdown from "./FilterDropdown"
+} from "@/components/ui/table";
+import FilterForm from "./FilterForm";
+import { FilterIcon } from "@/assets";
 
 interface DataTableProps<TData, TValue> {
-  columns: ColumnDef<TData, TValue>[]
-  data: TData[]
+  columns: ColumnDef<TData, TValue>[];
+  data: TData[];
 }
 
 export function DataTable<TData, TValue>({
@@ -37,8 +39,11 @@ export function DataTable<TData, TValue>({
   const [{ pageIndex, pageSize }, setPagination] = useState<PaginationState>({
     pageIndex: 0,
     pageSize: 10,
-  })
-  const [isPopoverOpen, setIsPopoverOpen] = useState(false)
+  });
+  const [columnFilters, setColumnFilters] = useState<
+    { id: string; value: any }[]
+  >([]);
+  // const [isPopoverOpen, setIsPopoverOpen] = useState(false);
 
   const pagination = React.useMemo(
     () => ({
@@ -46,7 +51,7 @@ export function DataTable<TData, TValue>({
       pageSize,
     }),
     [pageIndex, pageSize]
-  )
+  );
 
   const table = useReactTable({
     data,
@@ -56,16 +61,19 @@ export function DataTable<TData, TValue>({
     getPaginationRowModel: getPaginationRowModel(),
     state: {
       pagination,
+      columnFilters,
     },
     onPaginationChange: setPagination,
     pageCount: Math.ceil(data.length / pageSize),
-  })
+  });
 
-  const totalPages = table.getPageCount()
+  const totalPages = Math.ceil(
+    table.getFilteredRowModel().flatRows.length / pageSize
+  );
 
   const renderPageNumbers = () => {
-    const pageNumbers = []
-    const maxVisiblePages = 5
+    const pageNumbers = [];
+    const maxVisiblePages = 5;
 
     if (totalPages <= maxVisiblePages) {
       for (let i = 1; i <= totalPages; i++) {
@@ -81,7 +89,7 @@ export function DataTable<TData, TValue>({
           >
             {i}
           </button>
-        )
+        );
       }
     } else {
       // Always show first page
@@ -97,7 +105,7 @@ export function DataTable<TData, TValue>({
         >
           1
         </button>
-      )
+      );
 
       // Add ellipsis if necessary
       if (pageIndex > 2) {
@@ -108,12 +116,12 @@ export function DataTable<TData, TValue>({
           >
             ...
           </span>
-        )
+        );
       }
 
       // Add pages around current page
-      const startPage = Math.max(2, pageIndex)
-      const endPage = Math.min(totalPages - 1, pageIndex + 2)
+      const startPage = Math.max(2, pageIndex);
+      const endPage = Math.min(totalPages - 1, pageIndex + 2);
 
       for (let i = startPage; i <= endPage; i++) {
         pageNumbers.push(
@@ -128,7 +136,7 @@ export function DataTable<TData, TValue>({
           >
             {i}
           </button>
-        )
+        );
       }
 
       // Add ellipsis if necessary
@@ -140,7 +148,7 @@ export function DataTable<TData, TValue>({
           >
             ...
           </span>
-        )
+        );
       }
 
       // Always show last page
@@ -156,20 +164,53 @@ export function DataTable<TData, TValue>({
         >
           {totalPages}
         </button>
-      )
+      );
     }
 
-    return pageNumbers
-  }
+    return pageNumbers;
+  };
 
   const handlePageSizeChange = (newPageSize: number) => {
-    table.setPageSize(newPageSize)
-    setIsPopoverOpen(false)
-  }
+    table.setPageSize(newPageSize);
+  
+  };
+
+  const handleFilter = (filters: Record<string, any>) => {
+    const newColumnFilters = Object.entries(filters)
+      .filter(([_, value]) => value !== undefined && value !== "")
+      .map(([id, value]) => ({ id, value }));
+    setColumnFilters(newColumnFilters);
+
+  };
+
+  // Get unique organizations from the data
+  const organizations = useMemo(() => {
+    // @ts-ignore
+    return Array.from(new Set(data.map((item) => item.organization)));
+  }, [data]);
 
   return (
     <div className="flex flex-col gap-6">
-      <FilterDropdown />
+      <div className="flex justify-end">
+        <Popover>
+          <PopoverTrigger asChild>
+            <Button className="bg-[#39CDCC] hover:bg-[#39CDCC] text-white font-worksans text-sm font-medium flex items-center justify-center gap-2 px-4 py-6 rounded-md">
+              <FilterIcon className="text-white" />
+              <span>Filter</span>
+            </Button>
+          </PopoverTrigger>
+          <PopoverContent className="w-80 mr-5">
+            <FilterForm
+              onFilter={handleFilter}
+              organizations={organizations}
+              initialFilters={Object.fromEntries(
+                columnFilters.map((filter) => [filter.id, filter.value])
+              )}
+            />
+          </PopoverContent>
+        </Popover>
+      </div>
+
       <div className="rounded-md border border-[#213F7D0F] shadow-userDataShadow bg-white p-4">
         <Table>
           <TableHeader>
@@ -194,7 +235,7 @@ export function DataTable<TData, TValue>({
                 <TableRow
                   key={row.id}
                   data-state={row.getIsSelected() && "selected"}
-                  className='hover:bg-[#39CDCC] hover:bg-opacity-[3.5%]'
+                  className="hover:bg-[#39CDCC] hover:bg-opacity-[3.5%]"
                 >
                   {row.getVisibleCells().map((cell) => (
                     <TableCell key={cell.id}>
@@ -224,7 +265,7 @@ export function DataTable<TData, TValue>({
           <span className="mr-2 text-[#545F7D] font-normal text-sm">
             Showing
           </span>
-          <Popover open={isPopoverOpen} onOpenChange={setIsPopoverOpen}>
+          <Popover>
             <PopoverTrigger asChild>
               <Button
                 variant="outline"
@@ -250,7 +291,7 @@ export function DataTable<TData, TValue>({
             </PopoverContent>
           </Popover>
           <span className="ml-2 max-sm:ml-auto text-[#545F7D] font-normal text-sm">
-            out of {data.length}
+            out of {table.getFilteredRowModel().flatRows.length}
           </span>
         </div>
         <div className="flex items-center justify-between sm:justify-end w-full sm:w-auto">
@@ -271,7 +312,8 @@ export function DataTable<TData, TValue>({
               />
             </button>
             <span className="relative inline-flex items-center px-4 py-2 max-sm:flex-1 max-sm:w-full bg-white text-sm font-medium text-gray-700 md:hidden">
-              Page {pageIndex + 1} of {totalPages}
+              {/* Page {pageIndex + 1} of {totalPages} */}
+              Page {table.getState().pagination.pageIndex + 1} of {totalPages}
             </span>
             {renderPageNumbers()}
             <button
@@ -290,5 +332,5 @@ export function DataTable<TData, TValue>({
         </div>
       </div>
     </div>
-  )
+  );
 }
