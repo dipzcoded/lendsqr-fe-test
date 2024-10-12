@@ -1,4 +1,4 @@
-import { Link, NavLink, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation, useNavigate } from "react-router-dom";
 import {
   DashBoardIcon,
   BriefCaseIcon,
@@ -9,11 +9,12 @@ import { navLinks } from "@/constants/navlinks.constant";
 import styles from './Sidebar.module.scss';
 
 export default function Sidebar() {
-  const location = useLocation(); // Get the current location
+  const location = useLocation(); 
+  const navigate = useNavigate()
   const { pathname } = location;
 
   return (
-    <aside className={styles.sidebar}>
+    <aside className={styles.sidebar}  id="custom-scroll">
       <nav className={styles.nav}>
       <div className={styles["nav-group"]}>
         <div className={styles["nav-item"]}>
@@ -61,7 +62,7 @@ export default function Sidebar() {
         </div>
 
         <div className={styles["logout-section"]}>
-      <div className={styles["logout-button"]}>
+      <div className={styles["logout-button"]} onClick={() => navigate("/signin")}>
         <SignoutIcon />
         <span className={styles["logout-text"]}>Logout</span>
       </div>

@@ -1,48 +1,57 @@
+import React from "react";
+import styles from "./UserSummaryData.module.scss";
 import {
   TotalUsersIcon,
   UserLoansIcon,
   UserSavingsIcon,
   ActiveUsersIcon,
 } from "@/assets";
-import styles from './UserSummaryData.module.scss';
 
-export default function UserSummaryData() {
+// Define the type for the icon component
+type IconType = React.FC<React.SVGProps<SVGSVGElement>>;
+
+// Define the interface for the card data
+interface CardData {
+  Icon: IconType;
+  title: string;
+  value: number;
+}
+
+// Define props interface for UserSummaryCard
+type UserSummaryCardProps = CardData;
+
+const UserSummaryCard: React.FC<UserSummaryCardProps> = ({
+  Icon,
+  title,
+  value,
+}) => (
+  <div className={styles.card}>
+    <Icon />
+    <div className={styles.cardContent}>
+      <h3 className={styles.cardTitle}>{title}</h3>
+      <h4 className={styles.cardValue}>{value.toLocaleString()}</h4>
+    </div>
+  </div>
+);
+
+const UserSummaryData: React.FC = () => {
+  const cardData: CardData[] = [
+    { Icon: TotalUsersIcon, title: "USERS", value: 2453 },
+    { Icon: ActiveUsersIcon, title: "Active Users", value: 2453 },
+    { Icon: UserLoansIcon, title: "Users with Loans", value: 12453 },
+    { Icon: UserSavingsIcon, title: "Users with Savings", value: 102453 },
+  ];
+
   return (
-    <div className={styles['user-summary']}>
+    <div className={styles.container}>
       <h1 className={styles.title}>Users</h1>
       <div className={styles.grid}>
-        <div className={styles.card}>
-          <TotalUsersIcon className={styles.icon} />
-          <div className={styles['text-container']}>
-            <h3 className={styles.label}>USERS</h3>
-            <h4 className={styles.value}>2,453</h4>
-          </div>
-        </div>
-
-        <div className={styles.card}>
-          <ActiveUsersIcon className={styles.icon} />
-          <div className={styles['text-container']}>
-            <h3 className={styles.label}>Active Users</h3>
-            <h4 className={styles.value}>2,453</h4>
-          </div>
-        </div>
-
-        <div className={styles.card}>
-          <UserLoansIcon className={styles.icon} />
-          <div className={styles['text-container']}>
-            <h3 className={styles.label}>Users with Loans</h3>
-            <h4 className={styles.value}>12,453</h4>
-          </div>
-        </div>
-
-        <div className={styles.card}>
-          <UserSavingsIcon className={styles.icon} />
-          <div className={styles['text-container']}>
-            <h3 className={styles.label}>Users with Savings</h3>
-            <h4 className={styles.value}>102,453</h4>
-          </div>
-        </div>
+        {cardData.map((data, index) => (
+          <UserSummaryCard key={index} {...data} />
+        ))}
       </div>
     </div>
   );
-}
+};
+
+export default UserSummaryData;

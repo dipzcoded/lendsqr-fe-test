@@ -1,37 +1,60 @@
-.user-summary {
-    display: flex;
-    flex-direction: column;
-    gap: 1.5rem;
-    .title {
-      font-family: 'worksans', sans-serif;       font-weight: medium;       color: #213F7D;       font-size: 1.5rem;     }
-  
-    .grid {
-      display: grid;
-      grid-template-columns: repeat(1, 1fr);       gap: 1.5rem;   
-      @media (min-width: 640px) {         grid-template-columns: repeat(2, 1fr);
-      }
-  
-      @media (min-width: 1024px) {         grid-template-columns: repeat(4, 1fr);
-      }
-    }
-  
-    .card {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;       background-color: white;       border: 1px solid rgba(33, 63, 125, 0.06);       box-shadow: var(--shadow-userDataShadow);       border-radius: 0.375rem;       padding: 1.5rem 2rem;   
-      .icon {
-              }
-  
-      .text-container {
-        display: flex;
-        flex-direction: column;
-        gap: 0.5rem;   
-        .label {
-          color: #545F7D;           font-family: 'worksans', sans-serif;           font-weight: medium;           font-size: 0.875rem;           text-transform: uppercase;         }
-  
-        .value {
-          font-size: 1.5rem;           color: #213F7D;           font-weight: bold;         }
-      }
-    }
+
+
+.container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.title {
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 500;
+  color: #213F7D;
+  font-size: 1.5rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1.5rem;
+
+  @media (min-width: 640px) {
+    grid-template-columns: repeat(2, 1fr);
   }
-  
+
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background-color: white;
+  border: 1px solid rgba(33, 63, 125, 0.06);
+  box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+  border-radius: 0.375rem;
+  padding: 1.5rem 2rem;
+}
+
+.cardContent {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.cardTitle {
+  color: #545F7D;
+  font-family: 'Work Sans', sans-serif;
+  font-weight: 500;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+}
+
+.cardValue {
+  font-family: 'Work Sans', sans-serif;
+  font-size: 1.5rem;
+  color: #213F7D;
+  font-weight: 600;
+}

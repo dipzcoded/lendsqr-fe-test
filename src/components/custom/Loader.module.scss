@@ -1,0 +1,21 @@
+// Loader.module.scss
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.loaderIcon {
+  transform: scale(1.5); // Corresponds to Tailwind's scale-150
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg) scale(1.5);
+  }
+  100% {
+    transform: rotate(360deg) scale(1.5);
+  }
+}

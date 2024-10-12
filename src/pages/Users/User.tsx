@@ -1,14 +1,33 @@
-import { columns, userData } from "./_components/column";
+import { useGetAllUsers } from "@/hooks/Users/useGetAllUsers.hook";
+import { columns, User as Users } from "./_components/column";
 import { DataTable } from "./_components/data-table";
 import UserSummaryData from "./_components/UserSummaryData";
-import styles from './User.module.scss'; // Import the SCSS module
+import { Button } from "@/components/ui/button";
+import Loader from "../../components/custom/Loader";
 
 export default function User() {
+  const { users, isLoadingUsers, errorUsers, refetch } = useGetAllUsers();
+
+  if (isLoadingUsers) {
+    return <Loader />;
+  }
+
+  if (!isLoadingUsers && errorUsers) {
+    return (
+      <div className="bg-[#39CDCC] bg-opacity-25 px-3 py-4 rounded-lg font-worksans font-medium text-base flex justify-between gap-4 items-center">
+        <span>{errorUsers.message || "Having issues fetching users"}</span>
+        <Button onClick={() => refetch()}>refetch</Button>
+      </div>
+    );
+  }
+
   return (
-    <div className={styles.grid}> {/* Use the styles from the SCSS module */}
+    <div className="grid grid-cols-1 gap-14">
+      {" "}
+      {/* Use the styles from the SCSS module */}
       <UserSummaryData />
       {/* data table */}
-      <DataTable columns={columns} data={userData} />
+      <DataTable columns={columns} data={users as Users[]} />
     </div>
   );
 }
