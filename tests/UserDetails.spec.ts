@@ -82,14 +82,14 @@ test.describe("UserDetail Component", () => {
       timeout: 10000,
     });
 
-    await expect(page.locator('text="Blacklist User"')).toBeVisible();
-    await expect(page.locator('text="Activate User"')).toBeVisible();
+    await expect(page.locator('text="BLACKLIST USER"')).toBeVisible();
+    await expect(page.locator('text="ACTIVATE USER"')).toBeVisible();
 
     // Check if UserDetailsHeader is rendered
     //   await expect(page.locator('h3:text("Horn Jenkins")')).toBeVisible();
 
     await expect(page.locator('text="6708e88355d72b9eb892b3ad"')).toBeVisible();
-    await expect(page.locator('text="1,000,000.00"')).toBeVisible();
+    await expect(page.locator('text="₦1,000,000.00"')).toBeVisible();
     await expect(page.locator('text="1000000000/Acruex Bank"')).toBeVisible();
 
     // Check if GeneralDetails is rendered

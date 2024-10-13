@@ -30,10 +30,10 @@ export default function UserDetailsHeaderAction({ userFound }: Props) {
           <h2 className={styles.title}>User Details</h2>
           <div className={styles.buttonGroup}>
             <Button className="border border-[#E4033B] px-5 py-6 bg-transparent hover:bg-transparent text-[#E4033B] font-semibold text-sm font-worksans rounded-lg">
-              Blacklist User
+            BLACKLIST USER
             </Button>
             <Button className="border border-[#39CDCC] px-5 py-6 bg-transparent hover:bg-transparent text-[#39CDCC] font-semibold text-sm font-worksans rounded-lg">
-              Activate User
+            ACTIVATE USER
             </Button>
           </div>
         </div>
