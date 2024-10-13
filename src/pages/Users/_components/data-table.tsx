@@ -212,7 +212,7 @@ export function DataTable<TData, TValue>({
       </div>
 
       <div className="rounded-md border border-[#213F7D0F] shadow-userDataShadow bg-white p-4">
-        <Table>
+        <Table data-testid="user-table">
           <TableHeader>
             {table.getHeaderGroups().map((headerGroup) => (
               <TableRow key={headerGroup.id} className="border-none">

@@ -7,29 +7,29 @@ import {
   ActiveUsersIcon,
 } from "@/assets";
 
-// Define the type for the icon component
 type IconType = React.FC<React.SVGProps<SVGSVGElement>>;
 
-// Define the interface for the card data
 interface CardData {
   Icon: IconType;
   title: string;
   value: number;
 }
 
-// Define props interface for UserSummaryCard
-type UserSummaryCardProps = CardData;
+type UserSummaryCardProps = CardData & {
+  index: number;
+};
 
 const UserSummaryCard: React.FC<UserSummaryCardProps> = ({
   Icon,
   title,
   value,
+  index,
 }) => (
-  <div className={styles.card}>
-    <Icon />
+  <div className={styles.card} data-testid={`summary-card-${index}`}>
+    <Icon data-testid={`card-icon-${index}`} />
     <div className={styles.cardContent}>
-      <h3 className={styles.cardTitle}>{title}</h3>
-      <h4 className={styles.cardValue}>{value.toLocaleString()}</h4>
+      <h3 className={styles.cardTitle} data-testid={`card-title-${index}`}>{title}</h3>
+      <h4 className={styles.cardValue} data-testid={`card-value-${index}`}>{value.toLocaleString()}</h4>
     </div>
   </div>
 );
@@ -43,11 +43,11 @@ const UserSummaryData: React.FC = () => {
   ];
 
   return (
-    <div className={styles.container}>
-      <h1 className={styles.title}>Users</h1>
-      <div className={styles.grid}>
+    <div className={styles.container} data-testid="user-summary">
+      <h1 className={styles.title} data-testid="summary-title">Users</h1>
+      <div className={styles.grid} data-testid="summary-grid">
         {cardData.map((data, index) => (
-          <UserSummaryCard key={index} {...data} />
+          <UserSummaryCard key={index} {...data} index={index} />
         ))}
       </div>
     </div>

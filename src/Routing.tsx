@@ -14,7 +14,7 @@ export default function Routing() {
   return (
     <Router>
       <Routes>
-        <Route index path="/" element={<Navigate to="/signin" />} />
+        <Route index path="/"  element={<Navigate to="/signin" />} />
         <Route path="/signin" element={<Signin />} />
         <Route element={<AppLayout />}>
           <Route element={<Navigate replace to="/users" />} />
