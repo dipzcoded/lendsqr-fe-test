@@ -59,7 +59,7 @@ export default function UserDetailsHeader({ userInfo }: Props) {
             </div>
             <div className="flex flex-col py-2 sm:py-0 sm:px-3 gap-3 font-worksans">
               <h4 className="font-medium text-[#213F7D] text-xl lg:text-2xl">
-                {Number(
+              ₦{Number(
                   userInfo?.bankDetails.accountBalance.split("₦")[1]
                 ).toLocaleString("en-NG", {
                   minimumFractionDigits: 2,
