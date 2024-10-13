@@ -14,8 +14,8 @@ export default function User() {
 
   if (!isLoadingUsers && errorUsers) {
     return (
-      <div className="bg-[#39CDCC] bg-opacity-25 px-3 py-4 rounded-lg font-worksans font-medium text-base flex justify-between gap-4 items-center">
-        <span>{errorUsers.message || "Having issues fetching users"}</span>
+      <div className="bg-[#39CDCC] bg-opacity-25 px-3 py-4 rounded-lg font-worksans font-medium text-base flex justify-between gap-4 items-center" data-testid="error-message">
+        <span>{errorUsers.message === "Request failed with status code 500" ?  "Having issues fetching users" : errorUsers.message}</span>
         <Button onClick={() => refetch()}>refetch</Button>
       </div>
     );

@@ -11,7 +11,7 @@ export default function PageNotFound() {
     <div className={styles.container}>
       <div className={styles.alertBox}>
         <div className={styles.alertContent}>
-          <CircleAlert color="#E4033B" size={50} />
+          <CircleAlert color="#E4033B" size={50} data-testid="circle-alert" />
           <span className={styles.alertText}>
             Page not found:{" "}
             {pathname.length === 6

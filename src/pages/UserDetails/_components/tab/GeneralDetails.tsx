@@ -7,6 +7,13 @@ type Props = {
   userInfo: User
 }
 
+const InfoItem: React.FC<{ label: string; value?: string | number }> = ({ label, value }) => (
+  <div className={styles.infoItem}>
+    <h4 className={styles.label}>{label}</h4>
+    <h3 className={styles.value}>{value}</h3>
+  </div>
+);
+
 export default function GeneralDetails({ userInfo }: Props) {
   return (
     <div className={styles.container}>
@@ -62,10 +69,3 @@ export default function GeneralDetails({ userInfo }: Props) {
     </div>
   );
 }
-
-const InfoItem: React.FC<{ label: string; value?: string | number }> = ({ label, value }) => (
-  <div className={styles.infoItem}>
-    <h4 className={styles.label}>{label}</h4>
-    <h3 className={styles.value}>{value}</h3>
-  </div>
-);
