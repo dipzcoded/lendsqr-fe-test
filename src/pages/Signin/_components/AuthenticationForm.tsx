@@ -34,7 +34,7 @@ export default function AuthenticationForm() {
               onClick={() => setShowPassword((prev) => !prev)}
               className={styles["toggle-password"]}
             >
-              {showPassword ? "Close" : "Show"}
+              {showPassword ? "Hide" : "Show"}
             </span>
           </div>
           <p className={styles["forgot-password"]}>Forgot Password?</p>
