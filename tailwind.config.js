@@ -12,6 +12,7 @@ export default {
       colors: {},
       fontFamily: {
         worksans: ["Work Sans", "sans-serif"],
+        avenirNext:["Avenir Next Cyr",'sans-serif']
       },
       gridTemplateColumns: {
         'auto-fit-minmax': 'repeat(auto-fit, minmax(12rem, 1fr))',
