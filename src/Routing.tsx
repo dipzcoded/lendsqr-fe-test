@@ -9,7 +9,7 @@ import AppLayout from "./components/custom/AppLayout";
 import User from "./pages/Users/User";
 import UserDetail from "./pages/UserDetails/UserDetail";
 import PageNotFound from "./pages/PageNotFound/PageNotFound";
-
+// routing
 export default function Routing() {
   return (
     <Router>
